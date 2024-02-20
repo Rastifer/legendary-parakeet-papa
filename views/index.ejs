@@ -1,13 +1,19 @@
 <h1>Hello World from EJS.</h1>
 
-<p>I\'m Jacob.
-    
-    
-<li> I\'m a ' <%= myTypeClient %>, I am helpful, sociable, and ambitious</p>
+<p>I\'m Jacob.</p>
 
-<hr>
+<p><%= myResultClient.length %></p>
 
-<%= myResultClient[0].clientName
+<% for (var i=0; i< myResultClient.length; i++ ) { %>
+    
+
+<br>
+
+<%= myResultClient[0].userName %>
+
+<% } %>
+
+<li> I\'m a ' <%= myTypeClient %>, I am helpful, sociable, and ambitious %></li>
 
 
 <footer> sent from a file on my node server, yo!

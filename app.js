@@ -19,7 +19,7 @@ async function run() {
     await client.connect();
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
-    const result = await client.db("papa-database").collection("papa-collection").find().toArray()
+    const result = await client.db("papa-database").collection("papa-collection").find().toArray();
 
       console.log("papa-database result:", result);
     //   function(err, result) {
@@ -37,15 +37,17 @@ run().catch(console.dir);
 
 app.get('/read', (req,res) => {
 
-  let myResultServer = run()
+  let myResultServer = run();
+
+  console.log("myResultServer:", myResultServer);
 
   res.render('index', {
-    myTypeClient: myTypeServer,
+    // myTypeClient: myTypeServer,
     myResultClient: run()
     
-  })
+  });
 
-})
+});
 
 app.get('/', function(req, res) {
 
