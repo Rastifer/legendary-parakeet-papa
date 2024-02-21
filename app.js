@@ -50,7 +50,7 @@ async function run() {
 }
 // run().catch(console.dir);
 
-app.get('/read', async (req,res) => {
+app.get('/', async (req,res) => {
 
   let myResultServer = await run();
 
