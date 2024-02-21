@@ -82,7 +82,6 @@ app.get('/send', function (req, res) {
     res.send('Hello World from Express <br><a href="/">home</a>')
 })
 
-// app.listen(3000)
 
 app.listen(port, () => {
   console.log(`papa app listening on port ${port}`)
