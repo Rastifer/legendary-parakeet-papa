@@ -57,7 +57,7 @@ app.get('/', async (req,res) => {
   console.log("myResultServer:", myResultServer[0].userName);
 
   res.render('index', {
-    myTypeClient: myTypeServer,
+    // myTypeClient: myTypeServer,
     myResultClient: myResultServer
     
   });
@@ -65,16 +65,16 @@ app.get('/', async (req,res) => {
 });
 run().catch(console.dir);
 
-app.get('/', function(req, res) {
+// app.get('/', function(req, res) {
 
-  res.render('index', {
+//   res.render('index', {
    
-    myTypeClient: myTypeServer
+//     myTypeClient: myTypeServer
 
 
-  });
+//   });
   
-});
+// });
 
 
 app.get('/send', function (req, res) {
