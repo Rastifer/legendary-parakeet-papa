@@ -3,6 +3,14 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 5500;
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const bodyParser = require('body-parser')
+// set the view engine to ejs
+let path = require('path');
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(bodyParser.urlencoded({ extended: true }))
+
+let myTypeServer = "Type 2: The Giver ";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(process.env.uri, {
@@ -20,40 +28,49 @@ async function run() {
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
     const result = await client.db("papa-database").collection("papa-collection").find().toArray();
+    console.log("papa-database result:", result);
 
-      console.log("papa-database result:", result);
+    
+
+    await client.db("admin").command({ping: 1});
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+    return result;
+  } finally {
     //   function(err, result) {
     //   if (err) throw err;
     //   console.log("papa-database result:", result);
     //   db.close();
     // })
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
+    
+  // } finally {
     // Ensures that the client will close when you finish/error
     await client.close();
   }
 }
-run().catch(console.dir);
+// run().catch(console.dir);
 
-app.get('/read', (req,res) => {
+app.get('/read', async (req,res) => {
 
-  let myResultServer = run();
+  let myResultServer = await run();
 
-  console.log("myResultServer:", myResultServer);
+  console.log("myResultServer:", myResultServer[0].userName);
 
   res.render('index', {
-    // myTypeClient: myTypeServer,
-    myResultClient: run()
+    myTypeClient: myTypeServer,
+    myResultClient: myResultServer
     
   });
 
 });
+run().catch(console.dir);
 
 app.get('/', function(req, res) {
 
   res.render('index', {
    
-    myTypeClient: myTypeServer 
+    myTypeClient: myTypeServer
+
 
   });
   
@@ -68,5 +85,5 @@ app.get('/send', function (req, res) {
 // app.listen(3000)
 
 app.listen(port, () => {
-  console.log(`nov app listening on port ${port}`)
+  console.log(`papa app listening on port ${port}`)
 })

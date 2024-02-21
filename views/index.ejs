@@ -1,19 +1,20 @@
 <h1>Hello World from EJS.</h1>
 
-<p>I\'m Jacob.</p>
+<h2>I'm Jacob</h2>
 
 <p><%= myResultClient.length %></p>
 
-<% for (var i=0; i< myResultClient.length; i++ ) { %>
+<!-- <% for (var i=0; i< myResultClient.length; i++ ) { %> -->
     
 
 <br>
 
-<%= myResultClient[0].userName %>
+<li><%= myResultClient[0].userName %></li>
 
 <% } %>
 
 <li> I\'m a ' <%= myTypeClient %>, I am helpful, sociable, and ambitious %></li>
+<li>My favorite TV show is <%= myResultClient[0].tvShows %></li>
 
 
 <footer> sent from a file on my node server, yo!
