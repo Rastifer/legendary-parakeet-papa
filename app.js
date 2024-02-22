@@ -32,8 +32,8 @@ async function run() {
 
     
 
-    await client.db("admin").command({ping: 1});
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    // await client.db("admin").command({ping: 1});
+    // console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
     return result;
   } finally {
@@ -63,7 +63,7 @@ app.get('/', async (req,res) => {
   });
 
 });
-run().catch(console.dir);
+// run().catch(console.dir);
 
 // app.get('/', function(req, res) {
 
