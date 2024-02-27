@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 5500;
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require('body-parser')
+
 // set the view engine to ejs
 let path = require('path');
 app.set('view engine', 'ejs');
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 let myTypeServer = "Type 2: The Giver ";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(process.env.uri, {
+const client = new MongoClient(process.env.URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
