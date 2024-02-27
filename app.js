@@ -12,8 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 let myTypeServer = "Type 2: The Giver ";
 
+const MONGO_URI = "mongodb+srv://barry-chainsaw:Ml8PRYe95ZbmCYw8@snowcatcluster.uhucqcw.mongodb.net/?retryWrites=true&w=majority&appName=snowcatCluster"; 
+
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(process.env.URI, {
+const client = new MongoClient(MONGO_URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
