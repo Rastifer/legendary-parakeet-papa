@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 let myTypeServer = "Type 2: The Giver ";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(process.env.uri, {
+const client = new MongoClient(process.env.URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -48,7 +48,6 @@ async function run() {
     await client.close();
   }
 }
-// run().catch(console.dir);
 
 app.get('/', async (req,res) => {
 
@@ -63,18 +62,6 @@ app.get('/', async (req,res) => {
   });
 
 });
-// run().catch(console.dir);
-
-// app.get('/', function(req, res) {
-
-//   res.render('index', {
-   
-//     myTypeClient: myTypeServer
-
-
-//   });
-  
-// });
 
 
 app.get('/send', function (req, res) {
